@@ -15,7 +15,7 @@ const Navbar = () => {
       <div className="container">
         <div className="flex justify-between items-center">
           <div className="left-logo w-[150px]">
-            <Link>
+            <Link to="/">
               <img
                 src="/images/logo.png"
                 alt="Dragon News"
