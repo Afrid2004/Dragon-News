@@ -8,7 +8,7 @@ const ErrorPage = () => {
       <div className="flex justify-center items-center flex-col gap-3 max-w-sm">
         <h1 className="text-8xl font-bold text-gray-800">404</h1>
         <p className="text-2xl text-gray-500 font-medium text-center">
-          Opps, This Page Not Found!
+          Oops, This Page Not Found!
         </p>
         <p className="text-gray-700 font-medium text-center">
           The link may be corrupted or the page may have been removed.
