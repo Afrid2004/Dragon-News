@@ -3,6 +3,11 @@
 @plugin "daisyui"{
   themes : light --default;
 }
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #079992;
+}
 
 *{
   font-family: "Poppins", sans-serif;
@@ -14,5 +19,5 @@ body{
   @apply px-4 lg:px-0 w-full max-w-100 sm:max-w-150 md:max-w-187.5 lg:max-w-250 xl:max-w-300 2xl:max-w-325 mx-auto;
 }
 .desktop-menus .active{
-  @apply text-[#079992]
+  @apply text-(--color-primary)
 }
