@@ -1,2 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import "tailwindcss";
 @plugin "daisyui";
+
+*{
+  font-family: "Poppins", sans-serif;
+}
+body{
+  @apply bg-[#07999213] h-screen
+}
+.container{
+  @apply px-4 lg:px-0 w-full max-w-100 sm:max-w-150 md:max-w-187.5 lg:max-w-250 xl:max-w-300 2xl:max-w-325 mx-auto;
+}
+.desktop-menus .active{
+  @apply text-[#079992]
+}
