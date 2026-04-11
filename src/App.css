@@ -21,3 +21,12 @@ body{
 .desktop-menus .active{
   @apply text-(--color-primary)
 }
+.marque-before{
+  @apply relative pl-6;
+}
+.marque-before::before{
+  content: '';
+  top: 50%;
+  transform: translateY(-50%);
+  @apply bg-primary rounded-full w-2 h-2 absolute left-0;
+}

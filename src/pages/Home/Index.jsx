@@ -5,7 +5,9 @@ const Home = () => {
   return (
     <div>
       {/* latest news and Date component */}
-      <LatestNewsAndDate />
+      <section>
+        <LatestNewsAndDate />
+      </section>
     </div>
   );
 };
