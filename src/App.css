@@ -30,3 +30,6 @@ body{
   transform: translateY(-50%);
   @apply bg-primary rounded-full w-2 h-2 absolute left-0;
 }
+.active-category.active{
+  @apply bg-gray-300/70 font-semibold 
+} 

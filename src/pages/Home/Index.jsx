@@ -1,14 +1,17 @@
 import React from "react";
 import LatestNewsAndDate from "../../components/LatestNewsAndDate";
+import MiddlePost from "../../components/HomeLayout/MiddlePost";
 
 const Home = () => {
   return (
-    <div>
-      {/* latest news and Date component */}
-      <section>
-        <LatestNewsAndDate />
-      </section>
-    </div>
+    <>
+      <main>
+        {/* aside and main layout */}
+        <section>
+          <MiddlePost />
+        </section>
+      </main>
+    </>
   );
 };
 

@@ -31,7 +31,7 @@ const LatestNewsAndDate = () => {
         <div className="date border-l border-gray-300/70 shrink-0">
           <p className="flex items-center gap-1 py-2 pl-5">
             <CalendarDays className="shrink-0 w-4.5" />
-            {format(new Date(), "EEEE, Mo MMMM yyyy")}
+            {format(new Date(), "EEEE, d MMMM yyyy")}
           </p>
         </div>
       </div>
