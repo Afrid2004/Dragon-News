@@ -51,7 +51,7 @@ const NewsCard = ({ news }) => {
           <img
             src={image_url}
             alt={title}
-            className="aspect-4/3 rounded-lg mb-3 w-full"
+            className="aspect-4/3 rounded-lg mb-3 w-full border border-gray-300/70"
           />
           <p>
             {TrimWords(details, 35)}
