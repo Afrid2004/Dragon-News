@@ -7,7 +7,7 @@ const Marquee = MarqueeImport.default || MarqueeImport;
 const LatestNewsAndDate = () => {
   console.log(Marquee);
   return (
-    <div className="bg-white border-t border-b border-gray-300/70">
+    <div className="bg-white border-b border-gray-300/70">
       <div className="flex container justify-between items-center gap-2">
         <div className="latest-news grow">
           <div className="flex gap-2 items-center">

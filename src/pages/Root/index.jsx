@@ -9,12 +9,8 @@ import LatestNewsAndDate from "../../components/LatestNewsAndDate";
 const Root = () => {
   return (
     <>
-      <header>
-        <nav>
-          <Navbar></Navbar>
-        </nav>
-        <LatestNewsAndDate />
-      </header>
+      <Navbar></Navbar>
+      <LatestNewsAndDate />
       <main className="grid grid-cols-12 gap-5 container py-5">
         <aside className="col-span-3">
           <Suspense
