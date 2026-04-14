@@ -37,7 +37,7 @@ const Navbar = () => {
                 <div className="desktop-menus flex items-center gap-3">
                   {headerMenus}
                   <Link
-                    to="/login"
+                    to="/auth/login"
                     className="border-2 font-medium border-gray-800 px-6 py-1.5 shrink-0  rounded-4xl hover:bg-gray-900 hover:text-white text-[15px]"
                   >
                     Login
