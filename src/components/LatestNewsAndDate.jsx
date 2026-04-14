@@ -1,29 +1,33 @@
 import { format } from "date-fns";
 import { CalendarDays } from "lucide-react";
-import React from "react";
+import React, { use } from "react";
 import MarqueeImport from "react-fast-marquee";
 const Marquee = MarqueeImport.default || MarqueeImport;
 
+const fetchAllNews = fetch("/news.json").then((res) => res.json());
+
 const LatestNewsAndDate = () => {
-  console.log(Marquee);
+  const allNews = use(fetchAllNews);
+  const latestNews = allNews.filter(
+    (news) => news.others.is_today_pick == true,
+  );
   return (
     <div className="bg-white border-b border-gray-300/70">
       <div className="flex container justify-between items-center gap-2">
-        <div className="latest-news grow">
+        <div className="latest-news overflow-hidden">
           <div className="flex gap-2 items-center">
             <button className="px-4 py-2 bg-primary text-white shrink-0">
               Latest News
             </button>
             <Marquee pauseOnHover={true} autoFill={true} speed={80}>
               <div className="flex gap-4 items-center mr-4">
-                <p className="marque-before">
-                  Lorem ipsum dolor, Lorem, ipsum dolor sit amet consectetur
-                  adipisicing.
-                </p>
-                <p className="marque-before">
-                  Lorem ipsum dolor, Lorem ipsum dolor sit, amet consectetur
-                  adipisicing.
-                </p>
+                {latestNews.map((news) => {
+                  return (
+                    <p className="marque-before" key={news.id}>
+                      {news.title}
+                    </p>
+                  );
+                })}
               </div>
             </Marquee>
           </div>
