@@ -1,12 +1,15 @@
 import React, { Suspense } from "react";
 import Navbar from "../../components/Navbar";
-import { Outlet } from "react-router";
+import { Outlet, useNavigation } from "react-router";
 import Footer from "../../components/Footer";
 import LeftAside from "../../components/HomeLayout/LeftAside";
 import RightAside from "../../components/HomeLayout/RightAside";
 import LatestNewsAndDate from "../../components/LatestNewsAndDate";
+import { NewsLoading } from "../../components/Loading";
 
 const Root = () => {
+  const navigate = useNavigation();
+  console.log(navigate);
   return (
     <>
       <Navbar></Navbar>
@@ -22,7 +25,11 @@ const Root = () => {
           </Suspense>
         </aside>
         <section className="col-span-6">
-          <Outlet></Outlet>
+          {navigate.state == "loading" ? (
+            <NewsLoading></NewsLoading>
+          ) : (
+            <Outlet></Outlet>
+          )}
         </section>
         <aside className="col-span-3">
           <RightAside />

@@ -7,43 +7,38 @@ import NotFound from "../../components/NotFound";
 const CategoryPage = () => {
   const { id } = useParams();
   const data = useLoaderData();
-  const [post, setPost] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [post, setPost] = useState(null);
 
   useEffect(() => {
-    setLoading(true);
     if (id == "0") {
       setPost(data);
-      setLoading(false);
       return;
     } else if (id == "1") {
       const filteredNews = data.filter(
         (news) => news.others.is_today_pick == true,
       );
       setPost(filteredNews);
-      setLoading(false);
       return;
     }
     const filteredNews = data.filter((news) => news.category_id == id);
     setPost(filteredNews);
-    setLoading(false);
   }, [data, id]);
+
+  if (post === null) {
+    return <NewsLoading />;
+  }
 
   return (
     <>
-      {loading ? (
-        <NewsLoading />
-      ) : (
-        <div>
-          {post.length ? (
-            post.map((news) => {
-              return <NewsCard news={news} key={news.id} />;
-            })
-          ) : (
-            <NotFound />
-          )}
-        </div>
-      )}
+      <div>
+        {post.length ? (
+          post.map((news) => {
+            return <NewsCard news={news} key={news.id} />;
+          })
+        ) : (
+          <NotFound />
+        )}
+      </div>
     </>
   );
 };

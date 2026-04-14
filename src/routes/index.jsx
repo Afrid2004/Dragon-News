@@ -6,6 +6,7 @@ import CategoryPage from "../pages/CategoryPage";
 import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
+import { NewsLoading } from "../components/Loading";
 
 export const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ export const router = createBrowserRouter([
         path: "/category/:id",
         element: <CategoryPage />,
         loader: () => fetch("/news.json"),
+        hydrateFallbackElement: <NewsLoading></NewsLoading>,
       },
     ],
   },

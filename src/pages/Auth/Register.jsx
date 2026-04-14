@@ -69,15 +69,15 @@ const Register = () => {
             </div>
           </div>
           <div className="flex items-center border border-gray-300/70 h-10 rounded-sm mb-3">
-            <label htmlFor="password" className="h-full">
+            <label htmlFor="cpassword" className="h-full">
               <div className="border-r border-gray-300/70 bg-gray-200/70 hover:bg-gray-300/60 px-2 h-full flex items-center justify-center">
                 <Lock className="shrink-0 w-5 text-gray-500" />
               </div>
             </label>
             <input
               type="password"
-              name="password"
-              id="password"
+              name="cpassword"
+              id="cpassword"
               className="h-full w-full px-2 outline-none"
               placeholder="Confirm password"
               required
