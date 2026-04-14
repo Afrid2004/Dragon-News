@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router";
+import Footer from "../components/Footer";
 
 const AuthLayout = () => {
   return (
@@ -8,11 +9,12 @@ const AuthLayout = () => {
       <Navbar></Navbar>
       <main>
         <div>
-          <div className="container min-h-[calc(100vh-72px)] flex items-center justify-center">
+          <div className="container flex items-center justify-center">
             <Outlet></Outlet>
           </div>
         </div>
       </main>
+      <Footer></Footer>
     </>
   );
 };

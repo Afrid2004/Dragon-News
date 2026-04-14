@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <div className="bg-white border-t border-gray-300/70">
+    <footer className="bg-white border-t border-gray-300/70">
       <div className="container py-5">
         <div>
           <p className="uppercase text-center">
@@ -18,7 +18,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

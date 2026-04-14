@@ -28,9 +28,7 @@ const Root = () => {
           <RightAside />
         </aside>
       </main>
-      <footer>
-        <Footer></Footer>
-      </footer>
+      <Footer></Footer>
     </>
   );
 };
