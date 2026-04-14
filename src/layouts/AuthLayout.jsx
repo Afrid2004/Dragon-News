@@ -9,7 +9,7 @@ const AuthLayout = () => {
       <Navbar></Navbar>
       <main>
         <div>
-          <div className="container flex items-center justify-center">
+          <div className="container min-h-[calc(100vh-8.5rem)] flex items-center justify-center">
             <Outlet></Outlet>
           </div>
         </div>

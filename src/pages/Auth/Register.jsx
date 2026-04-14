@@ -4,7 +4,7 @@ import { Link } from "react-router";
 
 const Register = () => {
   return (
-    <div className="w-full max-w-sm my-10">
+    <div className="w-full max-w-sm">
       <div className="bg-white border border-gray-300/70 rounded-xl p-5">
         <div className="border-b border-gray-300/70 mb-5 pb-3">
           <h1 className="text-2xl font-semibold text-center">
