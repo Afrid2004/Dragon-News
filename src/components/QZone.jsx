@@ -3,7 +3,7 @@ import React from "react";
 const QZone = () => {
   return (
     <div className="max-h-100 overflow-y-auto">
-      <div className=" p-2 rounded-xl bg-gray-200/30 border border-gray-300/70 not-last:mb-3">
+      <div className=" p-2 rounded-xl bg-gray-200/30 border border-gray-300/70 mb-3">
         <img
           className="mb-3 aspect-3/2  border border-gray-300/70 rounded-lg w-full"
           src="/images/swimming.webp"
@@ -13,7 +13,7 @@ const QZone = () => {
           <h2 className="font-bold text-center">Swimming</h2>
         </a>
       </div>
-      <div className=" p-2 rounded-xl bg-gray-200/30 border border-gray-300/70">
+      <div className=" p-2 rounded-xl bg-gray-200/30 border border-gray-300/70 mb-3">
         <img
           className="mb-3 aspect-3/2  border border-gray-300/70 rounded-lg w-full"
           src="/images/class.webp"
