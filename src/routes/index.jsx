@@ -7,6 +7,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import { NewsLoading } from "../components/Loading";
+import NewsDetailsPage from "../pages/NewsDetailsPage";
 
 export const router = createBrowserRouter([
   {
@@ -44,5 +45,11 @@ export const router = createBrowserRouter([
         element: <Register />,
       },
     ],
+  },
+  {
+    path: "/news/:id",
+    element: <NewsDetailsPage />,
+    loader: () => fetch("/news.json"),
+    hydrateFallbackElement: <NewsLoading></NewsLoading>,
   },
 ]);

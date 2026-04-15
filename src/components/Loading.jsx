@@ -23,3 +23,18 @@ export const NewsLoading = () => {
     </div>
   );
 };
+
+export const CategoryLoad = () => {
+  return (
+    <div className="bg-white p-3 rounded-xl border border-gray-300/70">
+      <div className="flex w-full flex-col gap-4">
+        <div className="skeleton h-8 w-28"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+        <div className="skeleton h-8 w-full"></div>
+      </div>
+    </div>
+  );
+};

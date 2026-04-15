@@ -8,7 +8,7 @@ const MiddlePost = () => {
   return (
     <>
       {news.map((news) => {
-        return <NewsCard news={news} />;
+        return <NewsCard key={news.id} news={news} />;
       })}
     </>
   );

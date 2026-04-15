@@ -2,11 +2,19 @@ import { format } from "date-fns";
 import React from "react";
 import { TrimWords } from "../utility/TrimText";
 import { Bookmark, Eye, Share2 } from "lucide-react";
+import { Link } from "react-router";
+import Title from "./Title";
 
 const NewsCard = ({ news }) => {
-  const { title, total_view, image_url, details, author, rating } = news;
+  const { id, title, total_view, image_url, details, author, rating } = news;
+
+  const handleErrorImage = (e) => {
+    e.target.onerror = null;
+    e.target.src = "/images/demo_scenery.jpg";
+  };
   return (
     <div className="not-last:mb-3">
+      <Title title={title} />
       <div className="bg-white p-3 rounded-xl border border-gray-300/70">
         <div className="news-topper mb-3">
           <div className="flex gap-2 justify-between">
@@ -45,19 +53,23 @@ const NewsCard = ({ news }) => {
           </div>
         </div>
         <div className="news-middle mb-3">
-          <a href="#" className="hover:underline">
+          <Link to={`/news/${id}`} className="hover:underline">
             <h1 className="text-2xl font-medium mb-3">{title}</h1>
-          </a>
+          </Link>
           <img
-            src={image_url}
+            src={image_url || "/images/demo_scenery.jpg"}
             alt={title}
+            onError={handleErrorImage}
             className="aspect-4/3 rounded-lg mb-3 w-full border border-gray-300/70"
           />
           <p>
             {TrimWords(details, 35)}
-            <span className="text-primary cursor-pointer hover:underline font-medium">
+            <Link
+              to={`/news/${id}`}
+              className="text-primary cursor-pointer hover:underline font-medium"
+            >
               Read More
-            </span>
+            </Link>
           </p>
         </div>
         <div className="news-bottom flex items-center justify-between gap-3 border-t border-gray-300/70 pt-3">

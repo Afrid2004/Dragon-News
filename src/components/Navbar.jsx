@@ -7,9 +7,6 @@ const Navbar = () => {
       <NavLink to="/" className="font-medium">
         Home
       </NavLink>
-      <NavLink to="/news" className="font-medium">
-        News
-      </NavLink>
       <NavLink to="/profile" className="font-medium">
         Profile
       </NavLink>

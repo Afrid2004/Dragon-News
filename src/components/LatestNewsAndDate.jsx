@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import { CalendarDays } from "lucide-react";
 import React, { use } from "react";
 import MarqueeImport from "react-fast-marquee";
+import { Link } from "react-router";
 const Marquee = MarqueeImport.default || MarqueeImport;
 
 const fetchAllNews = fetch("/news.json").then((res) => res.json());
@@ -23,9 +24,13 @@ const LatestNewsAndDate = () => {
               <div className="flex gap-4 items-center mr-4">
                 {latestNews.map((news) => {
                   return (
-                    <p className="marque-before" key={news.id}>
+                    <Link
+                      to={`/news/${news.id}`}
+                      className="marque-before"
+                      key={news.id}
+                    >
                       {news.title}
-                    </p>
+                    </Link>
                   );
                 })}
               </div>
