@@ -3,7 +3,6 @@ import React from "react";
 import { TrimWords } from "../utility/TrimText";
 import { Bookmark, Eye, Share2 } from "lucide-react";
 import { Link } from "react-router";
-import Title from "./Title";
 
 const NewsCard = ({ news }) => {
   const { id, title, total_view, image_url, details, author, rating } = news;
@@ -14,7 +13,6 @@ const NewsCard = ({ news }) => {
   };
   return (
     <div className="not-last:mb-3">
-      <Title title={title} />
       <div className="bg-white p-3 rounded-xl border border-gray-300/70">
         <div className="news-topper mb-3">
           <div className="flex gap-2 justify-between">

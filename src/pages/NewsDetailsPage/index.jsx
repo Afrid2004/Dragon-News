@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { Bookmark, Eye, Share2 } from "lucide-react";
 import NotFound from "../../components/NotFound";
 import RelatedPost from "../../components/RelatedPost";
+import Title from "../../components/Title";
 
 const NewsDetailsPage = () => {
   const { id } = useParams();
@@ -36,6 +37,7 @@ const NewsDetailsPage = () => {
   } = filterNews;
   return (
     <>
+      <Title title={title} />
       <Navbar></Navbar>
       <main>
         <div className="container py-5">
