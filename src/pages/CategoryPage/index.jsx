@@ -3,6 +3,7 @@ import { useLoaderData, useParams } from "react-router";
 import NewsCard from "../../components/NewsCard";
 import { NewsLoading } from "../../components/Loading";
 import NotFound from "../../components/NotFound";
+import Title from "../../components/Title";
 
 const CategoryPage = () => {
   const { id } = useParams();
@@ -30,6 +31,7 @@ const CategoryPage = () => {
 
   return (
     <>
+      <Title title="Categories | Dragon News" />
       <div>
         {post.length ? (
           post.map((news) => {
