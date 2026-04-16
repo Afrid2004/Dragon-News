@@ -2,6 +2,7 @@ import { Eye, EyeOff, Lock, LogIn, Mail } from "lucide-react";
 import React, { use, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
+import Title from "../../components/Title";
 
 const Login = () => {
   const { logInUser, resetPassword } = use(AuthContext);
@@ -10,6 +11,8 @@ const Login = () => {
   const [isEye, setIsEye] = useState(false);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  console.log(location);
   const emailRef = useRef(null);
   const navigate = useNavigate();
 
@@ -56,9 +59,11 @@ const Login = () => {
       .then((result) => {
         if (!result.user.emailVerified) {
           setError("Please verify your email first.");
+          setLoading(false);
           return;
         }
-        navigate(location.state || "/", { replace: true });
+
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         if (err.code == "auth/invalid-credential") {
@@ -74,6 +79,7 @@ const Login = () => {
 
   return (
     <div className="w-full max-w-sm py-7">
+      <Title title="Login - Dragon News" />
       <div className="bg-white border border-gray-300/70 rounded-xl p-5">
         <div className="border-b border-gray-300/70 mb-5 pb-3">
           <h1 className="text-2xl font-semibold text-center">

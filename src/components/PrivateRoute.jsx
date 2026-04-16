@@ -6,6 +6,7 @@ import { NewsLoading } from "./Loading";
 const PrivateRoute = ({ children }) => {
   const { user, loading } = use(AuthContext);
   const location = useLocation();
+  console.log(location);
 
   if (loading) {
     return <NewsLoading />;
@@ -14,7 +15,7 @@ const PrivateRoute = ({ children }) => {
   if (user) {
     return children;
   }
-  return <Navigate state={location.pathname} to={"/auth/login"} replace />;
+  return <Navigate state={{ from: location }} to="/auth/login"></Navigate>;
 };
 
 export default PrivateRoute;
