@@ -1,12 +1,15 @@
-import { Eye, EyeOff, Lock, LogIn, Mail, UserRound } from "lucide-react";
+import { Eye, EyeOff, Lock, Mail, UserRound } from "lucide-react";
 import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
+import { sendEmailVerification } from "firebase/auth";
 
 const Register = () => {
-  const { createUser } = use(AuthContext);
+  const { createUser, updateUser } = use(AuthContext);
+  const [loading, setLoading] = useState(false);
   const [isEye, setIsEye] = useState(false);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{6,}$/;
 
@@ -22,7 +25,8 @@ const Register = () => {
     const confirmPassword = event.target.cpassword.value.trim();
     const checkBox = event.target.checkbox.checked;
 
-    setError(false);
+    setError("");
+    setSuccess("");
 
     // error valodation
     if (
@@ -31,12 +35,12 @@ const Register = () => {
       !password.trim() ||
       !confirmPassword.trim()
     ) {
-      setError("User info can't be null.");
+      setError("All fields are required. Please fill out the form.");
       return;
     }
 
     if (name.trim().length < 2) {
-      setError("Name must be atleast 2 characters");
+      setError("Name must be at least 2 characters long.");
       return;
     }
 
@@ -47,40 +51,53 @@ const Register = () => {
 
     if (!passwordRegex.test(password)) {
       setError(
-        "Please set your password along with at least 1 upper case, lowercase, number and special charecter.",
+        "Password must be at least 6 characters and include uppercase, lowercase, a number, and a special character.",
       );
       return;
     }
 
-    if (!(password === confirmPassword)) {
-      setError("Your password dosen't match.");
+    if (password !== confirmPassword) {
+      setError("Passwords doesn't match. Please try again.");
       return;
     }
 
     if (!checkBox) {
-      setError("Please accept our Terms and Conditions.");
+      setError("You must accept the Terms and Conditions to continue.");
       return;
     }
     // error valodation
 
+    setLoading(true);
     //send values
     createUser(email, password)
       .then((result) => {
-        console.log(result);
+        return updateUser(name).then(() => {
+          sendEmailVerification(result.user);
+        });
+      })
+      .then(() => {
         event.target.reset();
+        setSuccess(
+          "Account created successfully. Please check your email address.",
+        );
       })
       .catch((error) => {
         console.log(error.code);
         if (error.code == "auth/email-already-in-use") {
-          setError("Email Already Exist. Please try another one.");
+          setError(
+            "This email is already registered. Please use a different one.",
+          );
         } else {
-          setError(error.code);
+          setError("Something went wrong. Please try again later.");
         }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
   return (
-    <div className="w-full max-w-sm">
+    <div className="w-full max-w-sm py-7">
       <div className="bg-white border border-gray-300/70 rounded-xl p-5">
         <div className="border-b border-gray-300/70 mb-4 pb-2">
           <h1 className="text-2xl font-semibold text-center">
@@ -91,6 +108,11 @@ const Register = () => {
           {error && (
             <div className="error w-full mb-3 px-4 py-2 rounded-sm bg-red-200/70 text-red-900 border border-red-300/50">
               <p className="w-full text-center text-sm">{error}</p>
+            </div>
+          )}
+          {success && (
+            <div className="error w-full my-3 px-4 py-2 rounded-sm bg-green-500/20 text-green-900 border border-green-300/70">
+              <p className="w-full text-center text-sm">{success}</p>
             </div>
           )}
           <div className="flex items-center border border-gray-300/70 h-10 rounded-sm mb-4">
@@ -188,7 +210,10 @@ const Register = () => {
             type="submit"
             className="bg-gray-800 cursor-pointer text-white w-full mb-3 px-4 py-2 rounded-sm flex items-center gap-1 justify-center text-sm hover:bg-gray-900"
           >
-            Register <LogIn className="w-5" />
+            Register{" "}
+            {loading && (
+              <span className="loading loading-spinner loading-sm"></span>
+            )}
           </button>
           <div className="flex items-center gap-1 justify-center">
             <p className="text-sm">Already Have An Account? </p>

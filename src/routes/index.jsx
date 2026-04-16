@@ -8,6 +8,8 @@ import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
 import { NewsLoading } from "../components/Loading";
 import NewsDetailsPage from "../pages/NewsDetailsPage";
+import PrivateRoute from "../components/PrivateRoute";
+import AuthRoute from "../components/AuthRoute";
 
 export const router = createBrowserRouter([
   {
@@ -34,21 +36,37 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Login />,
+        element: (
+          <AuthRoute>
+            <Login />
+          </AuthRoute>
+        ),
       },
       {
         path: "/auth/login",
-        element: <Login />,
+        element: (
+          <AuthRoute>
+            <Login />
+          </AuthRoute>
+        ),
       },
       {
         path: "/auth/register",
-        element: <Register />,
+        element: (
+          <AuthRoute>
+            <Register />
+          </AuthRoute>
+        ),
       },
     ],
   },
   {
     path: "/news/:id",
-    element: <NewsDetailsPage />,
+    element: (
+      <PrivateRoute>
+        <NewsDetailsPage />
+      </PrivateRoute>
+    ),
     loader: () => fetch("/news.json"),
     hydrateFallbackElement: <NewsLoading></NewsLoading>,
   },
