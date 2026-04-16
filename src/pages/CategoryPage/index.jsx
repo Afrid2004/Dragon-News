@@ -31,7 +31,7 @@ const CategoryPage = () => {
 
   return (
     <>
-      <Title title="Categories | Dragon News" />
+      <Title title="Categories - Dragon News" />
       <div>
         {post.length ? (
           post.map((news) => {

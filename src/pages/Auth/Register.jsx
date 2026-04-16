@@ -3,6 +3,7 @@ import React, { use, useState } from "react";
 import { Link } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
 import { sendEmailVerification } from "firebase/auth";
+import Title from "../../components/Title";
 
 const Register = () => {
   const { createUser, updateUser } = use(AuthContext);
@@ -98,6 +99,7 @@ const Register = () => {
 
   return (
     <div className="w-full max-w-sm py-7">
+      <Title title="Register - Dragon News" />
       <div className="bg-white border border-gray-300/70 rounded-xl p-5">
         <div className="border-b border-gray-300/70 mb-4 pb-2">
           <h1 className="text-2xl font-semibold text-center">
