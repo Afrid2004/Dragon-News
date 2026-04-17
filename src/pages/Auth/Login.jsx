@@ -12,7 +12,6 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-  console.log(location);
   const emailRef = useRef(null);
   const navigate = useNavigate();
 
