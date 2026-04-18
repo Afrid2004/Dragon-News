@@ -38,3 +38,22 @@ input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
   display: none;
 }
+.mobile-menus a{
+  @apply bg-gray-100/90 p-2 border border-gray-200 hover:bg-gray-300/50 rounded-sm
+}
+
+.mobile-menus .active{
+  @apply text-(--color-primary)
+}
+
+.animate-right{
+  animation: slideRight 1s ease-in-out linear normal;
+}
+@keyframes slideRight {
+  0%{
+    right: -100%;
+  }
+  100%{
+    right: 0%;
+  }
+}

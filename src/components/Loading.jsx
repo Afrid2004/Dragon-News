@@ -2,7 +2,7 @@ import React from "react";
 
 export const NewsLoading = () => {
   return (
-    <div className="bg-white p-3 rounded-xl border border-gray-300/70">
+    <div className="bg-white p-3 rounded-xl border border-gray-300/70 w-full">
       <div className="flex w-full flex-col gap-4 mb-3">
         <div className="flex items-center gap-4">
           <div className="skeleton h-16 w-16 shrink-0 rounded-full"></div>

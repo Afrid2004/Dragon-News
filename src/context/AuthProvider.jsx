@@ -25,6 +25,11 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  //logout user
+  const logOutUser = () => {
+    return signOut(auth);
+  };
+
   //Observe user
   useEffect(() => {
     const unsbscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -36,22 +41,13 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  //logout user
-  const logOutUser = () => {
-    return signOut(auth);
-  };
-
   //update user
-  const updateUser = (name) => {
-    setLoading(false);
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-    });
+  const updateUser = (updatedData) => {
+    return updateProfile(auth.currentUser, updatedData);
   };
 
   //reset password
   const resetPassword = (email) => {
-    setLoading(false);
     return sendPasswordResetEmail(auth, email);
   };
 

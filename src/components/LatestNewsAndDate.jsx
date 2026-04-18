@@ -37,7 +37,7 @@ const LatestNewsAndDate = () => {
             </Marquee>
           </div>
         </div>
-        <div className="date border-l border-gray-300/70 shrink-0">
+        <div className="date border-l border-gray-300/70 shrink-0 hidden lg:block">
           <p className="flex items-center gap-1 py-2 pl-5">
             <CalendarDays className="shrink-0 w-4.5" />
             {format(new Date(), "EEEE, d MMMM yyyy")}

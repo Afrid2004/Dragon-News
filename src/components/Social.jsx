@@ -3,7 +3,7 @@ import { SocialData } from "../../public/data";
 
 const Social = () => {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-3">
       {SocialData.map((data) => {
         return (
           <a key={data.id} href={data.url} target="_blank">

@@ -42,7 +42,7 @@ const NewsDetailsPage = () => {
       <main>
         <div className="container py-5">
           <div className="grid grid-cols-12 gap-5">
-            <div className="col-span-9">
+            <div className="col-span-12 lg:col-span-9">
               <div className="mb-10">
                 <div className="bg-white p-5 rounded-xl border border-gray-300/70">
                   <div className="news-topper mb-3">
@@ -156,7 +156,7 @@ const NewsDetailsPage = () => {
                   <Link to={`/category/${category_id}`}>
                     <h1 className="mb-3 font-semibold text-lg">Related Post</h1>
                   </Link>
-                  <div className="grid grid-cols-4 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
                     {notCurrent?.map((data) => {
                       return <RelatedPost newsData={data} key={data.id} />;
                     })}
@@ -164,7 +164,7 @@ const NewsDetailsPage = () => {
                 </div>
               )}
             </div>
-            <div className="col-span-3">
+            <div className="col-span-12 lg:col-span-3">
               <RightAside />
             </div>
           </div>

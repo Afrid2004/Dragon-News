@@ -4,9 +4,10 @@ import { Link } from "react-router";
 import { AuthContext } from "../../context/AuthProvider";
 import { sendEmailVerification } from "firebase/auth";
 import Title from "../../components/Title";
+import { auth } from "../../Firebase/firebase.init";
 
 const Register = () => {
-  const { createUser, updateUser } = use(AuthContext);
+  const { createUser, updateUser, setUser } = use(AuthContext);
   const [loading, setLoading] = useState(false);
   const [isEye, setIsEye] = useState(false);
   const [error, setError] = useState("");
@@ -72,9 +73,16 @@ const Register = () => {
     //send values
     createUser(email, password)
       .then((result) => {
-        return updateUser(name).then(() => {
-          sendEmailVerification(result.user);
-        });
+        updateUser({
+          displayName: name,
+        })
+          .then(() => {
+            setUser({ ...result.user, displayName: name });
+            sendEmailVerification(result.user);
+          })
+          .catch((err) => {
+            setUser(result.user);
+          });
       })
       .then(() => {
         event.target.reset();

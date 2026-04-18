@@ -14,19 +14,19 @@ const Root = () => {
       <Navbar></Navbar>
       <LatestNewsAndDate />
       <main className="grid grid-cols-12 gap-5 container py-5">
-        <aside className="col-span-3">
+        <aside className="col-span-3 hidden lg:block">
           <Suspense fallback={<CategoryLoad></CategoryLoad>}>
             <LeftAside />
           </Suspense>
         </aside>
-        <section className="col-span-6">
+        <section className="col-span-12 lg:col-span-6">
           {navigate.state == "loading" ? (
             <NewsLoading></NewsLoading>
           ) : (
             <Outlet></Outlet>
           )}
         </section>
-        <aside className="col-span-3">
+        <aside className="col-span-12 lg:col-span-3">
           <RightAside />
         </aside>
       </main>

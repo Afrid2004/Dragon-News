@@ -5,7 +5,7 @@ import QZone from "../QZone";
 const RightAside = () => {
   return (
     <div className="sticky top-[-4rem]">
-      <div className="social bg-white p-3 rounded-xl border border-gray-300/70 mb-3">
+      <div className="social bg-white p-3 rounded-xl border border-gray-300/70 mb-3 hidden lg:block">
         <h3 className="font-bold mb-2">Find us on</h3>
         <Social />
       </div>

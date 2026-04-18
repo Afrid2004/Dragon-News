@@ -29,7 +29,9 @@ const LeftAside = () => {
           {categories.length}
         </span>
       </div>
-      <div className="grid grid-cols-1 gap-2 mt-2 max-h-[500px] overflow-y-auto custom-scroll">
+      <div
+        className={`grid grid-cols-1 gap-2 mt-2 max-h-125 overflow-y-auto custom-scroll`}
+      >
         {categories.map((category) => {
           const countCategoryPost = numCategories.filter(
             (cat) => cat.category_id === category.id,
